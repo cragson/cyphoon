@@ -8,9 +8,9 @@ Currently this project is using Winsocks for the TCP socket, which makes it only
 I will change this, so this project can be used cross-plattform.
 
 I want to give credits to the following projects and/or resources that helped me learning about the XBDM and also the overall understanding about Xbox 360 internals:
-- [AngryCarrot789/MemoryEngine360](!https://github.com/AngryCarrot789/MemoryEngine360)
-- [XboxDevWiki](!https://xboxdevwiki.net/Xbox_Debug_Monitor)
-- [Experiment5X/XBDM](!https://github.com/Experiment5X/XBDM)
+- [AngryCarrot789/MemoryEngine360](https://github.com/AngryCarrot789/MemoryEngine360)
+- [XboxDevWiki](https://xboxdevwiki.net/Xbox_Debug_Monitor)
+- [Experiment5X/XBDM](https://github.com/Experiment5X/XBDM)
 
 Also make sure to checkout my other projects on my [GitHub profile](https://github.com/cragson)!
 Just a few examples for you:
