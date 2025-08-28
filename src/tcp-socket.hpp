@@ -4,8 +4,23 @@
 #include <string>
 #include <vector>
 
+#ifdef _WIN32
 #include <winsock2.h>
+#include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
+#else 
+// Hacky UNIX compat
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#define WSACleanup()
+#define SOCKET int32_t
+#define closesocket close
+#define InetPtonA inet_pton
+#define INVALID_SOCKET -1
+#define SOCKET_ERROR -1
+#endif
 
 class tcp_socket
 {

@@ -2,7 +2,6 @@
 
 #include <format>
 #include <iostream>
-#include <ws2tcpip.h>
 #include <print>
 
 #include "xbox-status-codes.hpp"
@@ -17,12 +16,14 @@ bool tcp_socket::connect_to_xbox(const std::string& xbox_ip)
 		return false;
 	}
 
+	#ifdef _WIN32
 	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
 	{
 		std::println("[!] Could not initialize Winsock!\n");
 		return false;
 	}
+	#endif
 
 	this->m_client_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (this->m_client_fd == INVALID_SOCKET)
