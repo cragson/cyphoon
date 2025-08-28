@@ -1,20 +1,27 @@
 # cyphoon
 
 Hi!
-This is an API wrapper for the Xbox Debug Monitor (XBDM), written in modern C++.
-It connects with a TCP socket to your Xbox and allows you e.g. to parse loaded modules, read and write memory, dump memory and much more.
-This is achieved by wrapping up different commands of the XBDM.
-Currently this project is using Winsocks for the TCP socket, which makes it only usable under Windows.
-I will change this, so this project can be used cross-plattform.
 
-I want to give credits to the following projects and/or resources that helped me learning about the XBDM and also the overall understanding about Xbox 360 internals:
+This is an API wrapper for the Xbox Debug Monitor (XBDM), written in modern C++.
+
+It connects to your Xbox via a TCP socket and allows you to:
+- Parse loaded modules
+- Read and write memory
+- Dump memory
+
+And much more. This is achieved by wrapping up different commands of the XBDM. 
+
+This is the current platform support:
+- Windows (VS2022, works)
+- Linux (GCC/Clang, compiles but is untested)
+
+I want to give credits to the following projects and resources that helped me to learn about the XBDM and gain an overall understanding about Xbox 360 internals:
 - [AngryCarrot789/MemoryEngine360](https://github.com/AngryCarrot789/MemoryEngine360)
 - [XboxDevWiki](https://xboxdevwiki.net/Xbox_Debug_Monitor)
 - [Experiment5X/XBDM](https://github.com/Experiment5X/XBDM)
 
-Also make sure to checkout my other projects on my [GitHub profile](https://github.com/cragson)!
+Also make sure to check out my other projects on my [GitHub profile](https://github.com/cragson)!
 Just a few examples for you:
-
  - [osmium - A Framework for Windows external cheats, written in modern C++](https://github.com/cragson/osmium)
  - [A wrapper for the mGBA Scripting API, which is written in C++ and Lua.](https://github.com/cragson/mgba-api)
  - [A C++ hacking framework for the Playstation 5 (PS5)](https://github.com/cragson/nihonium)
@@ -26,12 +33,12 @@ I appreciate every PR or constructive feedback, don't hesitate to reach out to m
 ## Features
 
 - Implemented commands of XBDM
-    - systeminfo
-    - xbeinfo
-    - modules
-    - modsections
-    - getmem
-    - setmem
+    - `systeminfo`
+    - `xbeinfo`
+    - `modules`
+    - `modsections`
+    - `getmem`
+    - `setmem`
 
 - Wrapper API
     - Read memory (byte, word, dword)
@@ -40,21 +47,19 @@ I appreciate every PR or constructive feedback, don't hesitate to reach out to m
     - Write memory block (n-bytes)
     - Get list of all loaded modules (e.g. xboxkrnl.exe, default.xex)
     - Get list of all sections in loaded module (e.g. .text, .data)
-    - Hexdump Memory at address with n-bytes
+    - Hexdump memory at address with n-bytes
     - Get system info (HDD, Type, Platform, System, BaseKrnl, Krnl, XDK)
     - Retreive info about running application (xbeinfo running)
-    - Send custom command to xbox
+    - Send custom command to Xbox
 	
     ---
 ![showcase1](/res/showcase-1.png)
 
-## Quickstart
+## Quick Start
 1. Clone the repository
     - `git clone https://github.com/cragson/cyphoon`
 2. Note IP of Xbox 360 running on BadUpdate / RGH
-3. Use the following Snippet and you're **done**!
-    - Also have a look at the Code Examples below
-
+3. Use the following snippet as a template:
 ```cpp
 void quickstart()
 {
@@ -72,10 +77,13 @@ void quickstart()
     std::println("[*] System: {}\n[*] Kernel: {}", info->System, info->Krnl);
 }
 ```
+4. You're **done**, have fun experimenting!
+
+Also have a look at the code examples below.
 
 ## Code Examples
 Here are some code examples that should give you a quick orientation on how to do things with this project.
-They should be up2date but please always check for yourself.
+They should be up to date, but please always check for yourself.
 
 ### How to connect to your Xbox 360
 ```cpp
@@ -89,14 +97,14 @@ while (!api->setup(XBOX_IP))
 std::println("[*] Succcessfully connected!\n");
 ```
 
-### How to retreive systeminfo
+### How to retreive `systeminfo`
 ```cpp
 const auto info = api->get_system_info();
 
 std::println("[*] System: {}\n[*] Kernel: {}", info->System, info->Krnl);
 ```
 
-### How to retreive xbeinfo
+### How to retreive `xbeinfo`
 ```cpp
 const auto xbe = api->get_xbeinfo();
 

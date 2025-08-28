@@ -1,14 +1,18 @@
+#include <iostream>
 #include <memory>
 #include <print>
-#include <iostream>
 #include <string>
 
-#include "utils.hpp"
 #include "xbox-api.hpp"
+#include "utils.hpp"
 
 void lab()
 {
-    SetConsoleTitleA("cragson: cyphoon");
+    #ifdef _WIN32
+        SetConsoleTitleA("cragson: cyphoon");
+    #else
+        printf("\033]0;cragson: cyphoon\007");
+    #endif
 
     constexpr auto XBOX_IP = "192.168.4.179";
 
@@ -17,7 +21,7 @@ void lab()
     std::println("[*] Looking for {}:{}", XBOX_IP, api->get_xbdm_port());
 
     while (!api->setup(XBOX_IP))
-        Sleep(420);
+        Utils::sleep(420);
 
     std::println("[*] Succcessfully connected!\n");
 

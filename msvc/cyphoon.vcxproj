@@ -70,12 +70,29 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)build\$(PlatformTarget)\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)temp\$(PlatformTarget)\$(Configuration)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)build\$(PlatformTarget)\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)temp\$(PlatformTarget)\$(Configuration)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)build\$(PlatformTarget)\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)temp\$(PlatformTarget)\$(Configuration)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)build\$(PlatformTarget)\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)temp\$(PlatformTarget)\$(Configuration)</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,16 +143,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="tcp-socket.cpp" />
-    <ClCompile Include="xbox-api.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\tcp-socket.cpp" />
+    <ClCompile Include="..\src\xbox-api.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tcp-socket.hpp" />
-    <ClInclude Include="utils.hpp" />
-    <ClInclude Include="xbox-api.hpp" />
-    <ClInclude Include="xbox-status-codes.hpp" />
-    <ClInclude Include="xbox-structs.hpp" />
+    <ClInclude Include="..\src\tcp-socket.hpp" />
+    <ClInclude Include="..\src\utils.hpp" />
+    <ClInclude Include="..\src\xbox-api.hpp" />
+    <ClInclude Include="..\src\xbox-status-codes.hpp" />
+    <ClInclude Include="..\src\xbox-structs.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

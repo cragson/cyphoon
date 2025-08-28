@@ -1,14 +1,16 @@
 #pragma once
 
-#include <vector>
-#include <string>
-#include <regex>
-#include <utility>
 #include <algorithm>
+#include <chrono>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <ranges>
+#include <regex>
+#include <string>
+#include <thread>
+#include <utility>
+#include <vector>
 
 namespace Utils
 {
@@ -110,5 +112,10 @@ namespace Utils
 			ret += std::format("{:02X}", bt);
 
 		return ret;
+	}
+
+	inline const void sleep(const uint32_t miliseconds)
+	{
+		std::this_thread::sleep_for(std::chrono::milliseconds(420));
 	}
 }
