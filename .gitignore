@@ -4,7 +4,11 @@
 *.ct
 *.rcnet
 
-**/Debug/
-**/Release/
-**/.vs/
 **/.DS_Store
+
+**/.vs/
+
+build/
+install/
+msvc/build/
+msvc/temp/
